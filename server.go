@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -38,7 +37,7 @@ func check_rectangles(obj *Rectangles) {
 
 	for i := 0; i < len(obj.Input); i++ {
 		if is_overlap(obj.Main, obj.Input[i]) {
-			fmt.Println("is_overlap data:", obj.Input[i])
+			// fmt.Println("is_overlap data:", obj.Input[i])
 			currentTime := time.Now()
 
 			rect_time_obj := Rect_time{}
@@ -46,7 +45,7 @@ func check_rectangles(obj *Rectangles) {
 			rect_time_obj.Y = obj.Input[i].Y
 			rect_time_obj.Width = obj.Input[i].Width
 			rect_time_obj.Height = obj.Input[i].Height
-			rect_time_obj.Time = currentTime.Format("2017.09.07 17:06:06")
+			rect_time_obj.Time = currentTime.Format("2006-01-02 3:4:5 PM")
 
 			rect_time_list = append(rect_time_list, rect_time_obj)
 		}
@@ -73,7 +72,7 @@ func write_to_file(rect_time_list []Rect_time) {
 	defer file.Close()
 
 	data, _ := json.Marshal(rect_time_list)
-	fmt.Println(string(data))
+	// fmt.Println(string(data))
 
 	if _, err := file.WriteString(string(data)); err != nil {
 		log.Fatal(err)
