@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 	"reflect"
 )
 
@@ -34,7 +38,7 @@ func check_rectangles(obj *Rectangles) bool {
 	for i := 0; i < len(obj.Input); i++ {
 		if is_overlap(obj.Main, obj.Input[i]) {
 			fmt.Println("is_overlap data:", obj.Input[i])
-			write_to_file()
+			write_to_file(obj.Input[i])
 		}
 	}
 	return true
@@ -51,7 +55,22 @@ func is_overlap(rect1, rect2 Rect) bool {
 	return true
 }
 
-func write_to_file() bool {
+func write_to_file(rect Rect) bool {
+
+	file, err := os.OpenFile("data.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		log.Println(err)
+	}
+	defer file.Close()
+
+	data, _ := json.Marshal(rect)
+	buf := bytes.NewBuffer(data)
+	b, _ := ioutil.ReadAll(buf)
+
+	if _, err := file.WriteString(string(b) + "\n"); err != nil {
+		log.Fatal(err)
+	}
+
 	return true
 }
 
