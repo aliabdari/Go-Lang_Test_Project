@@ -9,6 +9,11 @@ To run the code, you can use the follwoing command(you should have GO installed 
 go run server.go
 ```
 
+The server can be found in this address:
+```
+http://localhost:8080
+```
+
 Sample POST request:
 
 ```
@@ -41,10 +46,4 @@ Sample GET response:
     "time": "2022-08-17 12:59:18 AM"
   }
 ]
-```
-
-The server can be found in this address:
-
-```
-http://localhost:8080
 ```
