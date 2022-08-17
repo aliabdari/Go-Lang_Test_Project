@@ -42,3 +42,9 @@ Sample GET response:
   }
 ]
 ```
+
+The server can be found in this address:
+
+```
+http://localhost:8080
+```
