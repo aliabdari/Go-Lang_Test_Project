@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// the struct of rectangle with time, used for output information
 type Rect_time struct {
 	X      int    `json:"x"`
 	Y      int    `json:"y"`
@@ -17,6 +18,7 @@ type Rect_time struct {
 	Time   string `json:"time"`
 }
 
+// the struct of a Rectangle,used for Input information
 type Rect struct {
 	X      int `json:"x"`
 	Y      int `json:"y"`
@@ -24,12 +26,13 @@ type Rect struct {
 	Height int `json:"height"`
 }
 
+// the struct of received data
 type Rectangles struct {
 	Main  Rect   `json:"main"`
 	Input []Rect `json:"input"`
 }
 
-// investigate all of the recieved information
+// investigate all of the received information
 func check_rectangles(obj *Rectangles) {
 
 	var rect_time_list = []Rect_time{}
